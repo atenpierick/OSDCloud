@@ -10,34 +10,36 @@ Import-Module OSD -Force
 
 # Choice Windows Version
 
+$Win10Online = New-Object System.Management.Automation.Host.ChoiceDescription '&0 Win10','Windows 10 Online'
+$Win11Online = New-Object System.Management.Automation.Host.ChoiceDescription '&1 Win11','Windows 11 Online'
+$WinOffline = New-Object System.Management.Automation.Host.ChoiceDescription '&2 USB', 'Offline Windows'
+
+
+
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($Win10Online, $Win11Online,$WinOffline)
+
 $title = 'Windows version'
-$number = 2
-$options = 'A', 'B', 'C' | ForEach-Object {
-  [System.Management.Automation.Host.ChoiceDescription]::new(
-    "Option $_&$number`b",  # NOTE: `b on display erases the number.
-    "Help for option $_"
-  )
-  ++$number
+$message = 'Select the Windows version you want to install?'
+$result = $host.ui.PromptForChoice($title, $message, $options, 2)
+
+if ($result -eq "0") {
+Write-Host Installing Windows 10 Pro
+Start-OSDCloud -OSVersion 'Windows 10 22H2 x64' -OSEdition Pro -ZTI -Restart
 }
-
-$selection = $Host.UI.PromptForChoice($title, '', $options, 0)
-
-# Handle the user’s selection
-switch ($selection) {
-  0 { 
-    Write-Host Installing Windows 10 Pro
-    Start-OSDCloud -OSVersion 'Windows 10 22H2 x64' -OSEdition Pro -ZTI -Restart
-  }
-  1 {
-  Write-Host Installing Windows 11 Pro
+elseif ($result -eq "1") {
+Write-Host Installing Windows 11 Pro
 Start-OSDCloud -OSVersion 'Windows 11 23H2 x64' -OSEdition Pro -ZTI -Restart
-  }
-  2 { 
-  Write-Host Installing Offline Windows 
-  Start-OSDCloud -FindImageFile -Restart
-  }
+}
+elseif ($result -eq "2") {
+Write-Host Installing Offline Windows 
+Start-OSDCloud -FindImageFile -Restart
 }
 
+
+#Start OSDCloud ZTI
+#Write-Host  -ForegroundColor Cyan "Start OSDCloud ZTI Mode"
+#Start-OSDCloud -OSName "Windows 10 22H2 x64" -OSLanguage nl-nl -OSEdition Pro -ZTI
+#Start-OSDCloud
 
 
 #Restart from WinPE
