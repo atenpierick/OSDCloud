@@ -10,8 +10,8 @@ Import-Module OSD -Force
 
 # Choice Windows Version
 
-$Win10Online = New-Object System.Management.Automation.Host.ChoiceDescription '&0-Windows 10 Online', 'Windows 10'
-$Win11Online = New-Object System.Management.Automation.Host.ChoiceDescription '&1-Windows 11 Online', 'Windows 11'
+$Win10Online = New-Object System.Management.Automation.Host.ChoiceDescription '&Windows 10 Online', 'Windows 10'
+$Win11Online = New-Object System.Management.Automation.Host.ChoiceDescription '&Windows 11 Online', 'Windows 11'
 $WinOffline = New-Object System.Management.Automation.Host.ChoiceDescription '&Windows Offline', 'Offline Windows'
 
 
@@ -20,7 +20,7 @@ $options = [System.Management.Automation.Host.ChoiceDescription[]]($Win10Online,
 
 $title = 'Windows version'
 $message = 'Select the Windows version you want to install?'
-$result = $host.ui.PromptForChoice($title, $message, $options, 0)
+$result = $host.ui.PromptForChoice($title, $message, $options, 2)
 
 if ($result -eq "0") {
 Write-Host Installing Windows 10 Pro
