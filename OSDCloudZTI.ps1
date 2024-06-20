@@ -2,8 +2,8 @@ Write-Host  -ForegroundColor Cyan "Starting OSDCloud ..."
 Start-Sleep -Seconds 5
 
 #Updating the OSD PowerShell Module
-Write-Host  -ForegroundColor Cyan "Updating the OSD PowerShell Module"
-Update-Module OSD -Force -SkipPublisherCheck
+#Write-Host  -ForegroundColor Cyan "Updating the OSD PowerShell Module"
+#Update-Module OSD -Force -SkipPublisherCheck
 
 Write-Host  -ForegroundColor Cyan "Importing the OSD PowerShell Module"
 Import-Module OSD -Force
