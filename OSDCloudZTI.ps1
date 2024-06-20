@@ -10,9 +10,9 @@ Import-Module OSD -Force
 
 # Choice Windows Version
 
-$Win10Online = New-Object System.Management.Automation.Host.ChoiceDescription '&1 Win10 Online','Windows 10 Online'
-$Win11Online = New-Object System.Management.Automation.Host.ChoiceDescription '&2 Win11 Online','Windows 11 Online'
-$WinOffline = New-Object System.Management.Automation.Host.ChoiceDescription  '&3 WinOffline','Offline Windows'
+$Win10Online = New-Object System.Management.Automation.Host.ChoiceDescription '&0 Win10 Online','Windows 10 Online'
+$Win11Online = New-Object System.Management.Automation.Host.ChoiceDescription '&1 Win11 Online','Windows 11 Online'
+$WinOffline = New-Object System.Management.Automation.Host.ChoiceDescription  '&2 WinOffline','Offline Windows'
 
 
 
