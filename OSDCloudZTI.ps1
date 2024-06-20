@@ -1,7 +1,7 @@
 Write-Host  -ForegroundColor Cyan "Starting OSDCloud ..."
 Start-Sleep -Seconds 5
 
-#Make sure I have the latest OSD Content
+#Updating the OSD PowerShell Module
 Write-Host  -ForegroundColor Cyan "Updating the OSD PowerShell Module"
 Install-Module OSD -Force
 
