@@ -12,7 +12,7 @@ Import-Module OSD -Force
 
 $Win10Online = New-Object System.Management.Automation.Host.ChoiceDescription 'Windows 10 Online &','Windows 10 Online'
 $Win11Online = New-Object System.Management.Automation.Host.ChoiceDescription 'Windows 11 Online &','Windows 11 Online'
-$WinOffline = New-Object System.Management.Automation.Host.ChoiceDescription  'Windows Offline &', 'Offline Windows'
+$WinOffline = New-Object System.Management.Automation.Host.ChoiceDescription  'Windows Offline &','Offline Windows'
 
 
 
