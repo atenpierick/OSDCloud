@@ -10,7 +10,7 @@ Import-Module OSD -Force
 
 #Start OSDCloud ZTI
 Write-Host  -ForegroundColor Cyan "Start OSDCloud ZTI Mode"
-Start-OSDCloud -OSName 'Windows 10 22H2 x64' -OSLanguage en-us -OSEdition Pro -ZTI
+Start-OSDCloud -OSName 'Windows 10 22H2 x64' -OSLanguage nl-nl -OSEdition Pro -ZTI
 
 #Restart from WinPE
 Write-Host  -ForegroundColor Cyan "Restarting in 20 seconds!"
