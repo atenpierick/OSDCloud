@@ -10,10 +10,13 @@ Import-Module OSD -Force
 
 # Choice Windows Version
 
-$Win10 = New-Object System.Management.Automation.Host.ChoiceDescription '&0-Win10', 'Windows 10'
-$Win11 = New-Object System.Management.Automation.Host.ChoiceDescription '&1-Win11', 'Windows 11'
+$Win10Online = New-Object System.Management.Automation.Host.ChoiceDescription '&0-Win10Online', 'Windows 10'
+$Win11Online = New-Object System.Management.Automation.Host.ChoiceDescription '&1-Win11Online', 'Windows 11'
+$WinOffline = New-Object System.Management.Automation.Host.ChoiceDescription '&2-WinOffline', 'Offline Windows'
 
-$options = [System.Management.Automation.Host.ChoiceDescription[]]($Win10, $Win11)
+
+
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($Win10Online, $Win11Online,$WinOffline)
 
 $title = 'Windows version'
 $message = 'Select the Windows version you want to install?'
@@ -27,7 +30,10 @@ elseif ($result -eq "1") {
 Write-Host Installing Windows 11 Pro
 Start-OSDCloud -OSVersion 'Windows 11 23H2 x64' -OSEdition Pro -ZTI -Restart
 }
-
+elseif ($result -eq "2") {
+Write-Host Installing Offline Windows 
+Start-OSDCloud -FindImageFile -Restart
+}
 
 
 #Start OSDCloud ZTI
