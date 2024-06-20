@@ -23,15 +23,15 @@ $message = 'Select the Windows version you want to install?'
 $result = $host.ui.PromptForChoice($title, $message, $options, 2)
 
 if ($result -eq "0") {
-Write-Host Installing Windows 10 Pro
+Write-Host 'Installing Windows 10 Pro'
 Start-OSDCloud -OSVersion 'Windows 10 22H2 x64' -OSEdition Pro -ZTI -Restart
 }
 elseif ($result -eq "1") {
-Write-Host Installing Windows 11 Pro
+Write-Host 'Installing Windows 11 Pro'
 Start-OSDCloud -OSVersion 'Windows 11 23H2 x64' -OSEdition Pro -ZTI -Restart
 }
 elseif ($result -eq "2") {
-Write-Host Installing Offline Windows 
+Write-Host 'Installing Offline Windows from USB'
 Start-OSDCloud -FindImageFile -Restart
 }
 
