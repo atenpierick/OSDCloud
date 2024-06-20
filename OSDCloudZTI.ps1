@@ -8,10 +8,33 @@ Start-Sleep -Seconds 5
 Write-Host  -ForegroundColor Cyan "Importing the OSD PowerShell Module"
 Import-Module OSD -Force
 
+# Choice Windows Version
+
+$Win10 = New-Object System.Management.Automation.Host.ChoiceDescription '&0-Win10', 'Windows 10'
+$Win11 = New-Object System.Management.Automation.Host.ChoiceDescription '&1-Win11', 'Windows 11'
+
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($Win10, $Win11)
+
+$title = 'Windows version'
+$message = 'Select the Windows version you want to install?'
+$result = $host.ui.PromptForChoice($title, $message, $options, 0)
+
+if ($result -eq "0") {
+Write-Host Installing Windows 10 Pro
+Start-OSDCloud -OSVersion 'Windows 10 22H2 x64' -OSEdition Pro -ZTI -Restart
+}
+elseif ($result -eq "1") {
+Write-Host Installing Windows 11 Pro
+Start-OSDCloud -OSVersion 'Windows 11 23H2 x64' -OSEdition Pro -ZTI -Restart
+}
+
+
+
 #Start OSDCloud ZTI
-Write-Host  -ForegroundColor Cyan "Start OSDCloud ZTI Mode"
+#Write-Host  -ForegroundColor Cyan "Start OSDCloud ZTI Mode"
 #Start-OSDCloud -OSName "Windows 10 22H2 x64" -OSLanguage nl-nl -OSEdition Pro -ZTI
-Start-OSDCloud
+#Start-OSDCloud
+
 
 #Restart from WinPE
 Write-Host  -ForegroundColor Cyan "Restarting in 20 seconds!"
